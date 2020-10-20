@@ -3,7 +3,7 @@
 ALTADATA Python Library
 --------------------------
 
-The ALTADATA Python library provides convenient access to the ALTADATA API from
+ALTADATA Python library provides convenient access to the ALTADATA API from
 applications written in the Python language.
 
 .. toctree::
