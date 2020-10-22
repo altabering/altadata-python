@@ -7,7 +7,7 @@ sys.path.append("../")
 from altadata.altadata import *
 
 PRODUCT_CODE = "co_10_jhucs_03"
-API_KEY = os.environ["api_key"]
+API_KEY = os.environ["TEST_API_KEY"]
 client = AltaDataAPI(API_KEY)
 
 
