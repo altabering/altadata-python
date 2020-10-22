@@ -2,6 +2,8 @@
 import sys
 import pytest
 import os
+import time
+from random import randint
 
 sys.path.append("../")
 from altadata.altadata import *
@@ -11,7 +13,10 @@ API_KEY = os.environ["TEST_API_KEY"]
 client = AltaDataAPI(API_KEY)
 
 
-def test_list_subscription_as_list():
+def test_list_subscription():
+    sleep_time = randint(1, 5)
+    time.sleep(sleep_time)
+
     product_code_list = []
     product_list = client.list_subscription(return_as_dataframe=False)
 
@@ -26,16 +31,10 @@ def test_list_subscription_as_list():
     ]
 
 
-def test_list_subscription_as_dataframe():
-    assert client.list_subscription()["code"].tolist() == [
-        "CO_10_JHUCS_04",
-        "CO_08_UNXXX_04",
-        "CO_10_JHUCS_03",
-        "CO_07_IDEAX_02",
-    ]
-
-
 def test_get_header():
+    sleep_time = randint(1, 5)
+    time.sleep(sleep_time)
+
     assert client.get_header(PRODUCT_CODE) == [
         "reported_date",
         "province_state",
@@ -62,6 +61,9 @@ def test_get_header():
 
 
 def test_get_data_with_sort():
+    sleep_time = randint(1, 5)
+    time.sleep(sleep_time)
+
     data = (
         client.get_data(product_code=PRODUCT_CODE, size=10, return_as_dataframe=False)
         .equal(condition_column="province_state", condition_value="Alabama")
@@ -73,6 +75,9 @@ def test_get_data_with_sort():
 
 
 def test_get_data_with_select():
+    sleep_time = randint(1, 5)
+    time.sleep(sleep_time)
+
     data = (
         client.get_data(product_code=PRODUCT_CODE, size=10)
         .select(selected_column=["reported_date", "province_state", "mortality_rate"])
@@ -87,6 +92,9 @@ def test_get_data_with_select():
 
 
 def test_get_data_with_in():
+    sleep_time = randint(1, 5)
+    time.sleep(sleep_time)
+
     data = (
         client.get_data(product_code=PRODUCT_CODE, size=250)
         .condition_in(
@@ -99,6 +107,9 @@ def test_get_data_with_in():
 
 
 def test_get_data_with_not_in():
+    sleep_time = randint(1, 5)
+    time.sleep(sleep_time)
+
     check_list = ["Montana", "Utah", "Alabama"]
 
     data = (
