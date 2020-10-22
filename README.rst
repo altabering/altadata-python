@@ -19,7 +19,7 @@ Installation
 Documentation
 =============
 
-Read the documentation online at `altadata-python.rtfd.io <altadata-python.rtfd.io>`_
+Read the documentation online at `altadata-python.rtfd.io <https://altadata-python.rtfd.io>`_
 
 Optionally, build documentation from the ``docs/`` folder
 

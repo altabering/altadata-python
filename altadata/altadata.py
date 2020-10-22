@@ -90,6 +90,15 @@ class AltaDataAPI:
 
         return header
 
+    def _check_parameters(self, condition_column, condition_value_list=None):
+        """A private method for controlling types of parameters"""
+        if type(condition_column) is not str:
+            raise TypeError("condition_column parameter must be string")
+
+        if condition_value_list is not None:
+            if type(condition_value_list) is not list:
+                raise TypeError("condition_value parameter must be list")
+
     def _fetch_data(self) -> Union[List[dict], DataFrame]:
         data = []
         page = 1
@@ -228,8 +237,7 @@ class AltaDataAPI:
         :param condition_column: Column to which the condition will be applied
         :param condition_value: Value to use with condition
         """
-        if type(condition_column) is not str:
-            raise TypeError("condition_column parameter must be string")
+        self._check_parameters(condition_column=condition_column)
 
         self.__request_url_base += (
             "&" + condition_column + "_eq=" + str(condition_value)
@@ -244,8 +252,7 @@ class AltaDataAPI:
         :param condition_column: Column to which the condition will be applied
         :param condition_value: Value to use with condition
         """
-        if type(condition_column) is not str:
-            raise TypeError("condition_column parameter must be string")
+        self._check_parameters(condition_column=condition_column)
 
         self.__request_url_base += (
             "&" + condition_column + "_neq=" + str(condition_value)
@@ -260,8 +267,7 @@ class AltaDataAPI:
         :param condition_column: Column to which the condition will be applied
         :param condition_value: Value to use with condition
         """
-        if type(condition_column) is not str:
-            raise TypeError("condition_column parameter must be string")
+        self._check_parameters(condition_column=condition_column)
 
         self.__request_url_base += (
             "&" + condition_column + "_gt=" + str(condition_value)
@@ -276,8 +282,7 @@ class AltaDataAPI:
         :param condition_column: Column to which the condition will be applied
         :param condition_value: Value to use with condition
         """
-        if type(condition_column) is not str:
-            raise TypeError("condition_column parameter must be string")
+        self._check_parameters(condition_column=condition_column)
 
         self.__request_url_base += (
             "&" + condition_column + "_gte=" + str(condition_value)
@@ -292,8 +297,7 @@ class AltaDataAPI:
         :param condition_column: Column to which the condition will be applied
         :param condition_value: Value to use with condition
         """
-        if type(condition_column) is not str:
-            raise TypeError("condition_column parameter must be string")
+        self._check_parameters(condition_column=condition_column)
 
         self.__request_url_base += (
             "&" + condition_column + "_lt=" + str(condition_value)
@@ -308,8 +312,7 @@ class AltaDataAPI:
         :param condition_column: Column to which the condition will be applied
         :param condition_value: Value to use with condition
         """
-        if type(condition_column) is not str:
-            raise TypeError("condition_column parameter must be string")
+        self._check_parameters(condition_column=condition_column)
 
         self.__request_url_base += (
             "&" + condition_column + "_lte=" + str(condition_value)
@@ -324,10 +327,9 @@ class AltaDataAPI:
         :param condition_column: Column to which the condition will be applied
         :param condition_value: Value to use with condition
         """
-        if type(condition_column) is not str:
-            raise TypeError("condition_column parameter must be string")
-        elif type(condition_value) is not list:
-            raise TypeError("condition_value parameter must be list")
+        self._check_parameters(
+            condition_column=condition_column, condition_value_list=condition_value
+        )
 
         condition_value_text = ",".join([item for item in condition_value])
         self.__request_url_base += (
@@ -343,10 +345,9 @@ class AltaDataAPI:
         :param condition_column: column to which the condition will be applied
         :param condition_value: value to use with condition
         """
-        if type(condition_column) is not str:
-            raise TypeError("condition_column parameter must be string")
-        elif type(condition_value) is not list:
-            raise TypeError("condition_value parameter must be list")
+        self._check_parameters(
+            condition_column=condition_column, condition_value_list=condition_value
+        )
 
         condition_value_text = ",".join([item for item in condition_value])
         self.__request_url_base += (
