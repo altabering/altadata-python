@@ -11,7 +11,7 @@ You can find the **product code** in the api section of the data product page.
 Get All Data
 --------------------------
 
-You can get the entire data with the code below.
+You can get the entire data with the code below. This function returns List of dict by default.
 
 .. code:: python
 
@@ -19,7 +19,14 @@ You can get the entire data with the code below.
     data = client.get_data(PRODUCT_CODE).load()
 
 
-This function returns pandas dataframe by default. If **return_as_dataframe** parameter is set to **False** then list of dict is returned.
+If **dataframe_functionality** parameter is True returns pandas dataframe.
+
+``Note:`` This functionality requires `pandas <https://github.com/pandas-dev/pandas>`_ (v0.14 or above) to work.
+
+.. code:: python
+
+    client = AltaDataAPI(api_key=YOUR_API_KEY, dataframe_functionality=True)
+    data = client.get_data(PRODUCT_CODE).load()
 
 
 Get Data with Conditions

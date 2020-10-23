@@ -2,7 +2,7 @@
 List Subscription
 --------------------------
 
-You can get your subscription info with the code below.
+You can get your subscription info with the code below. This function returns List of dict by default. 
 
 .. code:: python
 
@@ -10,4 +10,11 @@ You can get your subscription info with the code below.
     product_list = client.list_subscription()
 
 
-This function returns pandas dataframe by default. If **return_as_dataframe** parameter is set to False then List of dict is returned.
+If **dataframe_functionality** parameter is True returns pandas dataframe.
+
+``Note:`` This functionality requires `pandas <https://github.com/pandas-dev/pandas>`_ (v0.14 or above) to work.
+
+.. code:: python
+
+    client = AltaDataAPI(api_key=YOUR_API_KEY, dataframe_functionality=True)
+    product_list = client.list_subscription()

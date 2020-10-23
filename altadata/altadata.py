@@ -1,5 +1,5 @@
 """
-Python library for the ALTADATA API.
+Python library for the ALTADATA API
 
 This API was built with the developer in mind and should allow a developer
 to build applications around the ALTADATA API without having to deal with
@@ -7,9 +7,14 @@ accessing and managing the requests and responses.
 """
 import requests
 import json
-from pandas import DataFrame
-from pandas import to_datetime
-from typing import Union, List
+
+try:
+    from pandas import DataFrame
+    from pandas import to_datetime
+
+    pandas_installed = True
+except ImportError:
+    pandas_installed = False
 
 
 class AltaDataAPI:
@@ -17,16 +22,29 @@ class AltaDataAPI:
     This is the main class of the API module. It contains all of the data API logic.
     """
 
-    def __init__(self, api_key: str):
+    def __init__(self, api_key: str, dataframe_functionality: bool = False):
         """
         AltaDataAPI constructor. Sets the response format on all of the URLs and the api key required to access the API.
 
         :param api_key: ALTADATA API key
+        :param dataframe_functionality: If dataframe_functionality is True list_subscription and get_data functions returns pandas dataframe
         """
         self.api_key = api_key
         self.data_api_url = "https://www.altadata.io/data/api/"
         self.subscription_api_url = "https://www.altadata.io/subscription/api/"
         self.export_format = "json"
+        self.dataframe_functionality = dataframe_functionality
+
+        if type(api_key) is not str:
+            raise TypeError("api_key parameter must be string")
+
+        if type(dataframe_functionality) is not bool:
+            raise TypeError("dataframe_functionality parameter must be boolean")
+
+        if not pandas_installed and dataframe_functionality:
+            raise RuntimeError(
+                "dataframe_functionality requires pandas (v0.14 or above) to work"
+            )
 
     def _fix_subscription_response(self, response_json):
         """A private method to convert subscription api response to unnested version"""
@@ -58,9 +76,7 @@ class AltaDataAPI:
 
         return data
 
-    def _list_subscription(
-        self, return_as_dataframe: bool = True
-    ) -> Union[List[dict], DataFrame]:
+    def _list_subscription(self):
 
         request_url = (
             self.subscription_api_url + "subscriptions?api_key=" + self.api_key
@@ -70,7 +86,7 @@ class AltaDataAPI:
         response_json = json.loads(response.content)
         data = self._fix_subscription_response(response_json)
 
-        if return_as_dataframe:
+        if self.dataframe_functionality:
             data = DataFrame(data)
             data["createdAt"] = to_datetime(data["createdAt"])
             data["validUntil"] = to_datetime(data["validUntil"])
@@ -99,7 +115,7 @@ class AltaDataAPI:
             if type(condition_value_list) is not list:
                 raise TypeError("condition_value parameter must be list")
 
-    def _fetch_data(self) -> Union[List[dict], DataFrame]:
+    def _fetch_data(self):
         data = []
         page = 1
         total_size = 0
@@ -131,24 +147,19 @@ class AltaDataAPI:
         if self.size is not None:
             data = data[: self.size]
 
-        if self.return_as_dataframe:
+        if self.dataframe_functionality:
             data = DataFrame(data)
 
         return data
 
-    def list_subscription(
-        self, return_as_dataframe: bool = True
-    ) -> Union[List[dict], DataFrame]:
+    def list_subscription(self):
         """
         List customer's subscriptions
 
-        :param return_as_dataframe: Return as dataframe flag
-        :returns: if return_as_dataframe parameter is False returns **list of dict** otherwise returns **pandas dataframe**.
+        :returns: if dataframe_functionality parameter is False returns **list of dict** otherwise returns **pandas dataframe**.
         """
-        if type(return_as_dataframe) is not bool:
-            raise TypeError("return_as_dataframe parameter must be boolean")
 
-        data = self._list_subscription(return_as_dataframe)
+        data = self._list_subscription()
 
         return data
 
@@ -166,13 +177,12 @@ class AltaDataAPI:
 
         return header
 
-    def get_data(self, product_code: str, size: int = None, return_as_dataframe=True):
+    def get_data(self, product_code: str, size: int = None):
         """
         Initialize retrieve data process
 
         :param product_code: Data product code
         :param size: Data size
-        :param return_as_dataframe: Return as dataframe flag
         """
         if type(product_code) is not str:
             raise TypeError("product_code parameter must be string")
@@ -183,11 +193,7 @@ class AltaDataAPI:
             elif size <= 0:
                 raise ValueError("size parameter must be greater than 0")
 
-        if type(return_as_dataframe) is not bool:
-            raise TypeError("return_as_dataframe parameter must be boolean")
-
         self.size = size
-        self.return_as_dataframe = return_as_dataframe
         self.__request_url_base = (
             self.data_api_url + product_code + "/?format=" + self.export_format
         )
@@ -356,11 +362,11 @@ class AltaDataAPI:
 
         return self
 
-    def load(self) -> Union[List[dict], DataFrame]:
+    def load(self):
         """
         Fetch data with configurations given before
 
-        :returns: if return_as_dataframe parameter is False returns list of dict otherwise returns pandas dataframe.
+        :returns: if dataframe_functionality parameter is True returns pandas dataframe otherwise returns list of dict.
         """
 
         data = self._fetch_data()

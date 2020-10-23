@@ -10,20 +10,14 @@ from altadata.altadata import *
 
 PRODUCT_CODE = "co_10_jhucs_03"
 API_KEY = os.environ["TEST_API_KEY"]
-client = AltaDataAPI(API_KEY)
+client = AltaDataAPI(api_key=API_KEY, dataframe_functionality=True)
 
 
 def test_list_subscription():
-    sleep_time = randint(1, 5)
+    sleep_time = randint(1, 3)
     time.sleep(sleep_time)
 
-    product_code_list = []
-    product_list = client.list_subscription(return_as_dataframe=False)
-
-    for product_list_item in product_list:
-        product_code_list.append(product_list_item["code"])
-
-    assert product_code_list == [
+    assert client.list_subscription()["code"].tolist() == [
         "CO_10_JHUCS_04",
         "CO_08_UNXXX_04",
         "CO_10_JHUCS_03",
@@ -32,7 +26,7 @@ def test_list_subscription():
 
 
 def test_get_header():
-    sleep_time = randint(1, 5)
+    sleep_time = randint(1, 3)
     time.sleep(sleep_time)
 
     assert client.get_header(PRODUCT_CODE) == [
@@ -61,21 +55,21 @@ def test_get_header():
 
 
 def test_get_data_with_sort():
-    sleep_time = randint(1, 5)
+    sleep_time = randint(1, 3)
     time.sleep(sleep_time)
 
     data = (
-        client.get_data(product_code=PRODUCT_CODE, size=10, return_as_dataframe=False)
+        client.get_data(product_code=PRODUCT_CODE, size=10)
         .equal(condition_column="province_state", condition_value="Alabama")
         .sort(order_column="reported_date", order_method="asc")
         .load()
     )
 
-    assert data[0]["reported_date"] == "2020-04-12"
+    assert data["reported_date"].values[0] == "2020-04-12"
 
 
 def test_get_data_with_select():
-    sleep_time = randint(1, 5)
+    sleep_time = randint(1, 3)
     time.sleep(sleep_time)
 
     data = (
@@ -92,7 +86,7 @@ def test_get_data_with_select():
 
 
 def test_get_data_with_in():
-    sleep_time = randint(1, 5)
+    sleep_time = randint(1, 3)
     time.sleep(sleep_time)
 
     data = (
@@ -107,7 +101,7 @@ def test_get_data_with_in():
 
 
 def test_get_data_with_not_in():
-    sleep_time = randint(1, 5)
+    sleep_time = randint(1, 3)
     time.sleep(sleep_time)
 
     check_list = ["Montana", "Utah", "Alabama"]
