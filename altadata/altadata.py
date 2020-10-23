@@ -43,7 +43,7 @@ class AltaDataAPI:
 
         if not pandas_installed and dataframe_functionality:
             raise RuntimeError(
-                "dataframe_functionality requires pandas (v0.14 or above) to work"
+                "dataframe_functionality requires pandas (v0.21 or above) to work"
             )
 
     def _fix_subscription_response(self, response_json):

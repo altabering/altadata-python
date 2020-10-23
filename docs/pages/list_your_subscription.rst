@@ -12,7 +12,7 @@ You can get your subscription info with the code below. This function returns Li
 
 If **dataframe_functionality** parameter is True returns pandas dataframe.
 
-``Note:`` This functionality requires `pandas <https://github.com/pandas-dev/pandas>`_ (v0.14 or above) to work.
+``Note:`` This functionality requires `pandas <https://github.com/pandas-dev/pandas>`_ (v0.21 or above) to work.
 
 .. code:: python
 

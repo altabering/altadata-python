@@ -16,6 +16,27 @@ Installation
     pip install altadata
 
 
+Retrieving Data
+==================
+
+You can get the entire data with the code below. This function returns List of dict by default.
+
+.. code:: python
+
+    client = AltaDataAPI(YOUR_API_KEY)
+    data = client.get_data(PRODUCT_CODE).load()
+
+
+If **dataframe_functionality** parameter is True function returns pandas dataframe.
+
+``Note:`` This functionality requires `pandas <https://github.com/pandas-dev/pandas>`_ (v0.21 or above) to work.
+
+.. code:: python
+
+    client = AltaDataAPI(api_key=YOUR_API_KEY, dataframe_functionality=True)
+    data = client.get_data(PRODUCT_CODE).load()
+
+
 Documentation
 =============
 
@@ -29,14 +50,8 @@ Optionally, build documentation from the ``docs/`` folder
     cd docs
     make html
 
-Dependencies
-=============
-
-    - `requests <https://github.com/kennethreitz/requests>`_
-    - `pandas <https://github.com/pandas-dev/pandas>`_
-
 
 License
 =============
 
-altadata-python is under MIT license. See the `LICENSE`_ file for more info.
+altadata-python is under MIT license. See the `LICENSE <LICENSE>`_ file for more info.
