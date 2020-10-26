@@ -32,10 +32,10 @@ jobs:
         pytest
       env:
           TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
-     - name: Build and publish
-          env:
-            TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-            TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-          run: |
-            python setup.py sdist bdist_wheel
-            twine upload --repository pypi dist/*
+    - name: Build and publish
+        env:
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: |
+          python setup.py sdist bdist_wheel
+          twine upload --repository pypi dist/*
