@@ -8,10 +8,12 @@ ALTADATA Python Library
 .. image:: https://badge.fury.io/py/altadata.svg
     :target: https://badge.fury.io/py/altadata
 
+|
+
 ALTADATA Python library provides convenient access to the ALTADATA API from
 applications written in the Python language.
 
-.. contents:: Overview
+.. contents:: **Overview**
     :depth: 2
 
 Installation
@@ -41,6 +43,16 @@ If **dataframe_functionality** parameter is True function returns pandas datafra
 
     client = AltaDataAPI(api_key=YOUR_API_KEY, dataframe_functionality=True)
     data = client.get_data(PRODUCT_CODE).load()
+
+You can get data with using various conditions. 
+
+.. code:: python
+
+    client = AltaDataAPI(YOUR_API_KEY)
+    data = client.get_data(PRODUCT_CODE)\
+            .equal(condition_column=COLUMN_NAME, condition_value=CONDITION_VALUE)\
+            .sort(order_column=COLUMN_NAME, order_method="desc")\
+            .load()
 
 
 Documentation
