@@ -31,6 +31,7 @@ coverage.xml
 *.egg-info
 dist
 pip-wheel-metadata
+build/
 
 # Jupyter Notebook
 .ipynb_checkpoints
