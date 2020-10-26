@@ -5,13 +5,13 @@ Get Data
     - ``YOUR_API_KEY`` stands for your Alta Data API key.
     - ``PRODUCT_CODE`` is a code created to use the Data Product with API. 
 
-You can find the **product code** in the api section of the data product page.
+You can find the **product code** in the API section of the data product page.
 
 
 Get All Data
 --------------------------
 
-You can get the entire data with the code below. This function returns List of dict by default.
+You can get the entire data with the code below. :func:`~altadata.AltaDataAPI.get_data` returns **list of dict** by default.
 
 .. code:: python
 
@@ -19,7 +19,7 @@ You can get the entire data with the code below. This function returns List of d
     data = client.get_data(PRODUCT_CODE).load()
 
 
-If **dataframe_functionality** parameter is True returns pandas dataframe.
+If **dataframe_functionality** parameter is True :func:`~altadata.AltaDataAPI.get_data` returns **pandas dataframe**.
 
 ``Note:`` This functionality requires `pandas <https://github.com/pandas-dev/pandas>`_ (v0.21 or above) to work.
 

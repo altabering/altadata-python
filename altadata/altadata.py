@@ -27,7 +27,7 @@ class AltaDataAPI:
         AltaDataAPI constructor. Sets the response format on all of the URLs and the api key required to access the API.
 
         :param api_key: ALTADATA API key
-        :param dataframe_functionality: If dataframe_functionality is True list_subscription and get_data functions returns pandas dataframe
+        :param dataframe_functionality: If dataframe_functionality is True list_subscription and get_data functions returns pandas dataframe otherwise returns list of dict.
         """
         self.api_key = api_key
         self.data_api_url = "https://www.altadata.io/data/api/"
@@ -165,7 +165,7 @@ class AltaDataAPI:
 
     def get_header(self, product_code: str):
         """
-        Get data header
+        Get data header as a list
 
         :param product_code: Data product code
         :rtype: list
@@ -182,7 +182,7 @@ class AltaDataAPI:
         Initialize retrieve data process
 
         :param product_code: Data product code
-        :param size: Data size
+        :param size: Number of rows you want to retrieve
         """
         if type(product_code) is not str:
             raise TypeError("product_code parameter must be string")
@@ -204,7 +204,7 @@ class AltaDataAPI:
         """
         Select specific columns
 
-        :param selected_column: List of columns to choose
+        :param selected_column: List of columns to select
         """
         if type(selected_column) is not list:
             raise TypeError("selected_column parameter must be list")
