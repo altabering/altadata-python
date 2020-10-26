@@ -2,6 +2,12 @@
 ALTADATA Python Library
 --------------------------
 
+.. image:: https://github.com/altabering/altadata-python/workflows/build/badge.svg
+    :target: https://github.com/altabering/altadata-python/actions
+
+.. image:: https://badge.fury.io/py/altadata.svg
+    :target: https://badge.fury.io/py/altadata
+
 ALTADATA Python library provides convenient access to the ALTADATA API from
 applications written in the Python language.
 
@@ -9,7 +15,7 @@ applications written in the Python language.
     :depth: 2
 
 Installation
-=============
+==================
 
 .. code-block::
 
@@ -38,7 +44,7 @@ If **dataframe_functionality** parameter is True function returns pandas datafra
 
 
 Documentation
-=============
+==================
 
 Read the documentation online at `altadata-python.rtfd.io <https://altadata-python.rtfd.io>`_
 
@@ -52,6 +58,6 @@ Optionally, build documentation from the ``docs/`` folder
 
 
 License
-=============
+==================
 
 altadata-python is under MIT license. See the `LICENSE <LICENSE>`_ file for more info.
