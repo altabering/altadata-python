@@ -4,6 +4,13 @@ List Subscription
 
 You can get your subscription info with the code below. :func:`~altadata.AltaDataAPI.list_subscription` returns **list of dict** by default. 
 
+Firstly import library with the code below.
+
+.. code:: python
+
+    from altadata.altadata import *
+
+
 .. code:: python
 
     client = AltaDataAPI(YOUR_API_KEY)

@@ -1,9 +1,8 @@
 """
 Python library for the ALTADATA API
 
-This API was built with the developer in mind and should allow a developer
-to build applications around the ALTADATA API without having to deal with
-accessing and managing the requests and responses.
+This Python library allows a developer to build applications around the ALTADATA API
+without having to deal with accessing and managing the requests and responses.
 """
 import requests
 import json

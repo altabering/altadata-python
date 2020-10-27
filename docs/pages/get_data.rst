@@ -7,6 +7,12 @@ Get Data
 
 You can find the **product code** in the API section of the data product page.
 
+Firstly import library with the code below.
+
+.. code:: python
+
+    from altadata.altadata import *
+
 
 Get All Data
 --------------------------
