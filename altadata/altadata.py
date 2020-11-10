@@ -52,14 +52,10 @@ class AltaDataAPI:
         for product in response_json:
             product_item = product
             product_item["createdAt"] = (
-                product_item["createdAt"].split("T")[0]
-                + " "
-                + product_item["createdAt"].split("T")[1][:5]
+                product_item["createdAt"].replace("T", " ").split("+")[0]
             )
             product_item["validUntil"] = (
-                product_item["validUntil"].split("T")[0]
-                + " "
-                + product_item["validUntil"].split("T")[1][:5]
+                product_item["validUntil"].replace("T", " ").split("+")[0]
             )
             product_item["title"] = product_item["offer"]["title"]
             product_item["code"] = product_item["offer"]["code"]
@@ -201,7 +197,7 @@ class AltaDataAPI:
 
     def select(self, selected_column: list):
         """
-        Select specific columns
+        Select specific columns in the retrieve data process
 
         :param selected_column: List of columns to select
         """
@@ -219,7 +215,7 @@ class AltaDataAPI:
 
     def sort(self, order_column: str = None, order_method: str = "asc"):
         """
-        Sort data by given column and method
+        Sort data by given column and method in the retrieve data process
 
         :param order_column: Column to which the order is applied
         :param order_method: Sorting method. Posibble values: asc or desc
@@ -237,7 +233,7 @@ class AltaDataAPI:
 
     def equal(self, condition_column: str = None, condition_value=None):
         """
-        'Equal' condition by given column and value
+        'Equal' condition by given column and value in the retrieve data process
 
         :param condition_column: Column to which the condition will be applied
         :param condition_value: Value to use with condition

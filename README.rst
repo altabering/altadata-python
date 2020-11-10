@@ -1,5 +1,5 @@
 --------------------------
-ALTADATA Python Library
+ALTADATA Python Client
 --------------------------
 
 .. image:: https://github.com/altabering/altadata-python/workflows/build/badge.svg

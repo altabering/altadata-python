@@ -7,15 +7,14 @@ Get Data
 
 You can find the **product code** in the API section of the data product page.
 
+Get All Data
+--------------------------
+
 Firstly import library with the code below.
 
 .. code:: python
 
     from altadata.altadata import *
-
-
-Get All Data
---------------------------
 
 You can get the entire data with the code below. :func:`~altadata.AltaDataAPI.get_data` returns **list of dict** by default.
 
