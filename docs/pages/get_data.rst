@@ -117,14 +117,14 @@ select specific columns
 get the specified amount of data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    You can limit size of data.
+    You can limit data.
 
     .. code:: python
 
         product_code = "co_10_jhucs_03"
 
         client = AltaDataAPI(YOUR_API_KEY)
-        data = client.get_data(product_code, size=20).load()
+        data = client.get_data(product_code, limit=20).load()
 
 
 
@@ -138,7 +138,7 @@ Get Data with Multiple Conditions
         product_code = "co_10_jhucs_03"
 
         client = AltaDataAPI(YOUR_API_KEY)
-        data = client.get_data(product_code, size=100)\
+        data = client.get_data(product_code, limit=100)\
                     .condition_in(condition_column="province_state", condition_value=["Montana", "Utah"])\
                     .sort(order_column="mortality_rate", order_method="desc")\
                     .select(selected_column=["reported_date", "province_state", "mortality_rate"])\

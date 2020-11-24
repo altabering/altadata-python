@@ -59,7 +59,7 @@ def test_get_data_with_sort():
     time.sleep(sleep_time)
 
     data = (
-        client.get_data(product_code=PRODUCT_CODE, size=10)
+        client.get_data(product_code=PRODUCT_CODE, limit=10)
         .equal(condition_column="province_state", condition_value="Alabama")
         .sort(order_column="reported_date", order_method="asc")
         .load()
@@ -73,7 +73,7 @@ def test_get_data_with_select():
     time.sleep(sleep_time)
 
     data = (
-        client.get_data(product_code=PRODUCT_CODE, size=10)
+        client.get_data(product_code=PRODUCT_CODE, limit=10)
         .select(selected_column=["reported_date", "province_state", "mortality_rate"])
         .load()
     )
@@ -90,7 +90,7 @@ def test_get_data_with_in():
     time.sleep(sleep_time)
 
     data = (
-        client.get_data(product_code=PRODUCT_CODE, size=250)
+        client.get_data(product_code=PRODUCT_CODE, limit=250)
         .condition_in(
             condition_column="province_state", condition_value=["Montana", "Utah"]
         )
@@ -107,7 +107,7 @@ def test_get_data_with_not_in():
     check_list = ["Montana", "Utah", "Alabama"]
 
     data = (
-        client.get_data(product_code=PRODUCT_CODE, size=250)
+        client.get_data(product_code=PRODUCT_CODE, limit=250)
         .condition_not_in(
             condition_column="province_state", condition_value=check_list,
         )

@@ -10,7 +10,7 @@ ALTADATA Python Client
 
 |
 
-ALTADATA Python library provides convenient access to the ALTADATA API from
+`ALTADATA <https://www.altadata.io>`_ Python library provides convenient access to the ALTADATA API from
 applications written in the Python language.
 
 .. contents:: **Overview**

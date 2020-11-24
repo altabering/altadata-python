@@ -131,16 +131,16 @@ class AltaDataAPI:
 
             data += response_json
 
-            if self.size is not None:
+            if self.limit is not None:
                 total_size += len(response_json)
 
-                if total_size > self.size:
+                if total_size > self.limit:
                     break
 
             page += 1
 
-        if self.size is not None:
-            data = data[: self.size]
+        if self.limit is not None:
+            data = data[: self.limit]
 
         if self.dataframe_functionality:
             data = DataFrame(data)
@@ -172,23 +172,23 @@ class AltaDataAPI:
 
         return header
 
-    def get_data(self, product_code: str, size: int = None):
+    def get_data(self, product_code: str, limit: int = None):
         """
         Initialize retrieve data process
 
         :param product_code: Data product code
-        :param size: Number of rows you want to retrieve
+        :param limit: Number of rows you want to retrieve
         """
         if type(product_code) is not str:
             raise TypeError("product_code parameter must be string")
 
-        if size is not None:
-            if type(size) is not int:
-                raise TypeError("size parameter must be integer")
-            elif size <= 0:
-                raise ValueError("size parameter must be greater than 0")
+        if limit is not None:
+            if type(limit) is not int:
+                raise TypeError("limit parameter must be integer")
+            elif limit <= 0:
+                raise ValueError("limit parameter must be greater than 0")
 
-        self.size = size
+        self.limit = limit
         self.__request_url_base = (
             self.data_api_url + product_code + "/?format=" + self.export_format
         )

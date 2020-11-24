@@ -5,7 +5,7 @@ with open("README.rst", "r") as fh:
 
 setup(
     name="altadata",
-    version="0.0.3",
+    version="0.0.4",
     description="Python library for the ALTADATA API",
     url="https://github.com/altabering/altadata-python",
     author="ALTADATA",
