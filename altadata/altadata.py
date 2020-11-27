@@ -31,7 +31,6 @@ class AltaDataAPI:
         self.api_key = api_key
         self.data_api_url = "https://www.altadata.io/data/api/"
         self.subscription_api_url = "https://www.altadata.io/subscription/api/"
-        self.export_format = "json"
         self.dataframe_functionality = dataframe_functionality
 
         if type(api_key) is not str:
@@ -42,7 +41,7 @@ class AltaDataAPI:
 
         if not pandas_installed and dataframe_functionality:
             raise RuntimeError(
-                "dataframe_functionality requires pandas (v0.21 or above) to work"
+                "dataframe_functionality requires pandas (v0.23 or above) to work"
             )
 
     def _fix_subscription_response(self, response_json):
@@ -89,13 +88,7 @@ class AltaDataAPI:
         return data
 
     def _get_header(self, product_code: str):
-        request_url = (
-            self.data_api_url
-            + product_code
-            + "/?format="
-            + self.export_format
-            + "&page=1"
-        )
+        request_url = self.data_api_url + product_code + "/?format=json&page=1"
         response = requests.get(request_url, headers={"Authorization": self.api_key})
         header = list(json.loads(response.content)[0].keys())
 
@@ -189,9 +182,7 @@ class AltaDataAPI:
                 raise ValueError("limit parameter must be greater than 0")
 
         self.limit = limit
-        self.__request_url_base = (
-            self.data_api_url + product_code + "/?format=" + self.export_format
-        )
+        self.__request_url_base = self.data_api_url + product_code + "/?format=json"
 
         return self
 

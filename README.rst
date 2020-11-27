@@ -38,7 +38,7 @@ You can get the entire data with the code below. This function returns List of d
 We currently have pandas dataframe support in the library. Users can optionally retrieve their datasets as pandas dataframe.
 If **dataframe_functionality** parameter is True function returns pandas dataframe.
 
-``Note:`` This functionality requires `pandas <https://github.com/pandas-dev/pandas>`_ (v0.21 or above) to work.
+``Note:`` This functionality requires `pandas <https://github.com/pandas-dev/pandas>`_ (v0.23 or above) to work.
 
 .. code:: python
 

@@ -1,16 +1,15 @@
 # coding: utf-8
 import sys
-import pytest
 import os
 import time
 from random import randint
 
 sys.path.append("../")
-from altadata.altadata import *
+from altadata import altadata
 
 PRODUCT_CODE = "co_10_jhucs_03"
 API_KEY = os.environ["TEST_API_KEY"]
-client = AltaDataAPI(api_key=API_KEY, dataframe_functionality=True)
+client = altadata.AltaDataAPI(api_key=API_KEY, dataframe_functionality=True)
 
 
 def test_list_subscription():

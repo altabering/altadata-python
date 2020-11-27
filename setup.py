@@ -5,7 +5,7 @@ with open("README.rst", "r") as fh:
 
 setup(
     name="altadata",
-    version="0.0.4",
+    version="0.1.0",
     description="Python library for the ALTADATA API",
     url="https://github.com/altabering/altadata-python",
     author="ALTADATA",
@@ -14,6 +14,7 @@ setup(
     classifiers=[
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
+        "Topic :: Software Development",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
@@ -26,5 +27,6 @@ setup(
     packages=find_packages(exclude=["docs", "tests"]),
     python_requires=">= 3.5",
     install_requires=["requests >= 2.7.0"],
-    extras_require={"pandas": ["pandas >= 0.21.0"]},
+    tests_require=["pytest"],
+    extras_require={"dataframe_functionality": ["pandas >= 0.23.0"]},
 )

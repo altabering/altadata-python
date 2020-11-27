@@ -17,4 +17,4 @@ Firstly import library with the code below.
     header = client.get_header(PRODUCT_CODE)
 
 
-This function returns list.
+:func:`~altadata.AltaDataAPI.get_header` returns **list**.
