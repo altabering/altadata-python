@@ -89,7 +89,7 @@ def test_get_data_with_in():
     time.sleep(sleep_time)
 
     data = (
-        client.get_data(product_code=PRODUCT_CODE, limit=250)
+        client.get_data(product_code=PRODUCT_CODE)
         .condition_in(
             condition_column="province_state", condition_value=["Montana", "Utah"]
         )
@@ -106,7 +106,7 @@ def test_get_data_with_not_in():
     check_list = ["Montana", "Utah", "Alabama"]
 
     data = (
-        client.get_data(product_code=PRODUCT_CODE, limit=250)
+        client.get_data(product_code=PRODUCT_CODE)
         .condition_not_in(
             condition_column="province_state", condition_value=check_list,
         )

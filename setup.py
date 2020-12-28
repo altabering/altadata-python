@@ -5,7 +5,7 @@ with open("README.rst", "r") as fh:
 
 setup(
     name="altadata",
-    version="0.1.1",
+    version="0.2.0",
     description="Python library for the ALTADATA API",
     url="https://github.com/altabering/altadata-python",
     author="ALTADATA",
@@ -20,6 +20,7 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
     ],
     keywords="altadata api data marketplace",
     long_description=long_description,
@@ -28,5 +29,5 @@ setup(
     python_requires=">= 3.5",
     install_requires=["requests >= 2.7.0"],
     tests_require=["pytest"],
-    extras_require={"dataframe_functionality": ["pandas >= 0.23.0"]},
+    extras_require={"dataframe_functionality": ["pandas >= 0.25.3"]},
 )
