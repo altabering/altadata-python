@@ -13,7 +13,7 @@ ALTADATA Python Client
 
 |
 
-`ALTADATA <https://www.altadata.io>`_ Python library provides convenient access to the ALTADATA API from applications written in the Python language. With this Python library, developers can build applications around the ALTADATA API without having to deal with accessing and managing requests and responses.
+`ALTADATA <https://www.altadata.io>`_ is a Curated Data Marketplace. This Python library provides convenient access to the ALTADATA API from applications written in the Python language. With this Python library, developers can build applications around the ALTADATA API without having to deal with accessing and managing requests and responses.
 
 .. contents:: **Overview**
     :depth: 2
