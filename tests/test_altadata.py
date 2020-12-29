@@ -1,8 +1,6 @@
 # coding: utf-8
 import sys
 import os
-import time
-from random import randint
 
 sys.path.append("../")
 from altadata import altadata
@@ -13,9 +11,6 @@ client = altadata.AltaDataAPI(api_key=API_KEY, dataframe_functionality=True)
 
 
 def test_list_subscription():
-    sleep_time = randint(1, 3)
-    time.sleep(sleep_time)
-
     assert client.list_subscription()["code"].tolist() == [
         "CO_10_JHUCS_04",
         "CO_08_UNXXX_04",
@@ -25,9 +20,6 @@ def test_list_subscription():
 
 
 def test_get_header():
-    sleep_time = randint(1, 3)
-    time.sleep(sleep_time)
-
     assert client.get_header(PRODUCT_CODE) == [
         "reported_date",
         "province_state",
@@ -54,9 +46,6 @@ def test_get_header():
 
 
 def test_get_data_with_sort():
-    sleep_time = randint(1, 3)
-    time.sleep(sleep_time)
-
     data = (
         client.get_data(product_code=PRODUCT_CODE, limit=10)
         .equal(condition_column="province_state", condition_value="Alabama")
@@ -68,9 +57,6 @@ def test_get_data_with_sort():
 
 
 def test_get_data_with_select():
-    sleep_time = randint(1, 3)
-    time.sleep(sleep_time)
-
     data = (
         client.get_data(product_code=PRODUCT_CODE, limit=10)
         .select(selected_column=["reported_date", "province_state", "mortality_rate"])
@@ -85,9 +71,6 @@ def test_get_data_with_select():
 
 
 def test_get_data_with_in():
-    sleep_time = randint(1, 3)
-    time.sleep(sleep_time)
-
     data = (
         client.get_data(product_code=PRODUCT_CODE)
         .condition_in(
@@ -100,9 +83,6 @@ def test_get_data_with_in():
 
 
 def test_get_data_with_not_in():
-    sleep_time = randint(1, 3)
-    time.sleep(sleep_time)
-
     check_list = ["Montana", "Utah", "Alabama"]
 
     data = (
