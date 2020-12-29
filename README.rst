@@ -2,7 +2,7 @@
 ALTADATA Python Client
 --------------------------
 
-.. image:: https://github.com/altabering/altadata-python/workflows/unit-test/badge.svg
+.. image:: https://github.com/altabering/altadata-python/workflows/build/badge.svg
     :target: https://github.com/altabering/altadata-python/actions
 
 .. image:: https://badge.fury.io/py/altadata.svg
