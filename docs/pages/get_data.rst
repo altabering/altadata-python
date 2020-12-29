@@ -26,7 +26,7 @@ You can get the entire data with the code below. :func:`~altadata.AltaDataAPI.ge
 
 If **dataframe_functionality** parameter is True :func:`~altadata.AltaDataAPI.get_data` returns **pandas dataframe**.
 
-``Note:`` This functionality requires `pandas <https://github.com/pandas-dev/pandas>`_ (v0.23 or above) to work.
+``Note:`` This functionality requires `pandas <https://github.com/pandas-dev/pandas>`_ (v0.25.3 or above) to work.
 
 .. code:: python
 

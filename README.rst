@@ -2,11 +2,14 @@
 ALTADATA Python Client
 --------------------------
 
-.. image:: https://github.com/altabering/altadata-python/workflows/build/badge.svg
+.. image:: https://github.com/altabering/altadata-python/workflows/unit-test/badge.svg
     :target: https://github.com/altabering/altadata-python/actions
 
 .. image:: https://badge.fury.io/py/altadata.svg
-    :target: https://badge.fury.io/py/altadata
+    :target: https://pypi.org/project/altadata
+
+.. image:: https://anaconda.org/altadata/altadata/badges/version.svg
+    :target: https://anaconda.org/altadata/altadata
 
 |
 
@@ -18,9 +21,17 @@ ALTADATA Python Client
 Installation
 ==================
 
+You can install the package via `pip <https://pip.pypa.io/en/stable/>`_
+
 .. code-block::
 
     pip install altadata
+
+You can install the package via `conda <https://docs.conda.io/en/latest/>`_
+
+.. code-block::
+
+    conda install altadata::altadata
 
 
 Retrieving Data
@@ -37,7 +48,7 @@ You can get the entire data with the code below. This function returns List of d
 We currently have pandas dataframe support in the library. Users can optionally retrieve their datasets as pandas dataframe.
 If **dataframe_functionality** parameter is True function returns pandas dataframe.
 
-``Note:`` This functionality requires `pandas <https://github.com/pandas-dev/pandas>`_ (v0.23 or above) to work.
+``Note:`` This functionality requires `pandas <https://github.com/pandas-dev/pandas>`_ (v0.25.3 or above) to work.
 
 .. code:: python
 
